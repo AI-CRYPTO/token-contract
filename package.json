@@ -1,5 +1,5 @@
 {
-  "name": "AI Crypto",
+  "name": "AICrypto",
   "version": "1.0.0",
   "description": "",
   "main": "truffle.js",
@@ -27,9 +27,7 @@
     "truffle-wallet-provider": "0.0.5"
   },
   "scripts": {
-    "test": "truffle test",
-    "flatten-token": "./node_modules/.bin/truffle-flattener ./contracts/AICToken.sol > ./deploy/AICToken.sol",
-    "flatten-presale": "./node_modules/.bin/truffle-flattener ./contracts/AICPublicsale.sol > ./deploy/AICPublicsale.sol"
+    "test": "truffle test"
   },
   "keywords": [
     "solidity",
