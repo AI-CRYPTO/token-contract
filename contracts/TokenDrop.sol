@@ -4,14 +4,29 @@ import "./Moduler.sol";
 
 import "./LockableToken.sol";
 
+/**
+ * @title TokenDrop
+ * @dev TokenDrop is a token holder contract that will spread
+ * locked tokens multiply
+ */
 contract TokenDrop is Moduler {
 
+    /**
+    * @dev Creates a contract that drop its initication balances of locked ERC20 token for gift
+    * @param _token token of ERC20 token which is being managed
+    */
     constructor(LockableToken _token) 
         public
         Moduler(_token)
     {
     }
 
+    /**
+    * @dev Transfers tokens held by timelock to recipients multiply.
+    * @param _toList address of the recipients to whom received tokens 
+    * @param _amountEach uint256 the amount of tokens to be transferred
+    * #param _expiresAtList release times
+    */
     function spreadConditional(
         address[] _toList,
         uint256 _amountEach,
@@ -32,6 +47,11 @@ contract TokenDrop is Moduler {
         return true;
     }
 
+    /**
+    * @dev Transfers tokens to recipients multiply.
+    * @param _toList address of the recipients to whom received tokens 
+    * @param _amountEach uint256 the amount of tokens to be transferred
+    */
     function spread(
         address[] _toList,
         uint256 _amountEach
@@ -49,6 +69,9 @@ contract TokenDrop is Moduler {
         return true;
     }
 
+    /**
+    * @dev Validate spread without condition.
+    */
     function spreadValidation(
         address[] _toList,
         uint256 _amountEach
@@ -60,6 +83,9 @@ contract TokenDrop is Moduler {
         return _toList.length > 0 && _amountEach.mul(_toList.length) <= token.balanceOf(this);
     }
 
+    /**
+    * @dev Validate spread with condition.
+    */
     function spreadConditionalValidation(
         address[] _toList,
         uint256 _amountEach
