@@ -3,7 +3,7 @@ pragma solidity ^0.4.21;
 import "./BasicToken.sol";
 import "./ERC20.sol";
 
-import "./Ownable.sol";
+import "./ownership/Ownable.sol";
 
 contract StandardToken is ERC20, BasicToken, Ownable {
 

@@ -2,7 +2,7 @@ pragma solidity ^0.4.21;
 
 import "./MintableToken.sol";
 
-import "./SafeMath.sol";
+import "./math/SafeMath.sol";
 
 contract LockableToken is MintableToken {
 
@@ -73,7 +73,7 @@ contract LockableToken is MintableToken {
             }
         }
 
-        return transfer(_to, _value);
+    return transfer(_to, _value);
     }
 
     /**

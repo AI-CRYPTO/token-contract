@@ -2,8 +2,8 @@ pragma solidity ^0.4.21;
 
 import "./ERC20Basic.sol";
 import "./SafeERC20.sol";
-import "./Ownable.sol";
-import "./SafeMath.sol";
+import "./ownership/Ownable.sol";
+import "./math/SafeMath.sol";
 
 contract TokenVesting is Ownable {
     using SafeMath for uint256;
