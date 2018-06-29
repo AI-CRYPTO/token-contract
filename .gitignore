@@ -1,2 +1,5 @@
 build
 node_modules
+truffle.js
+package-lock.json
+package.json
