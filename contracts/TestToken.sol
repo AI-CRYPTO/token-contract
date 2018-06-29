@@ -1,15 +1,14 @@
-pragma solidity ^0.4.21;
+pragma solidity ^0.4.24;
 
-import './LockableToken.sol';
+import './ReliableToken.sol';
 
-contract TestToken is LockableToken {
+contract TestToken is ReliableToken {
 
   string public constant name = "Test Crypto";
   string public constant symbol = "TTC";
   uint32 public constant decimals = 18;
 
   uint256 public constant INITIAL_SUPPLY = 10000000000 * (10 ** uint256(decimals));
-  //uint256 public constant INITIAL_SUPPLY = 10000000000;
 
   /**
   * @dev Constructor that gives msg.sender all of existing tokens.

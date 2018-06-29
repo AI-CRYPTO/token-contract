@@ -1,4 +1,4 @@
-pragma solidity ^0.4.21;
+pragma solidity ^0.4.24;
 
 import "./ERC20Basic.sol";
 
@@ -37,8 +37,6 @@ contract BasicToken is ERC20Basic {
         require(_to != msg.sender);
         require(_value <= balances[msg.sender]);
         
-        _preValidateTransfer(msg.sender, _to, _value);
-
         balances[msg.sender] = balances[msg.sender].sub(_value);
         balances[_to] = balances[_to].add(_value);
         emit Transfer(msg.sender, _to, _value);
@@ -51,15 +49,5 @@ contract BasicToken is ERC20Basic {
      */
     function balanceOf(address _owner) public view returns (uint256) {
         return balances[_owner];
-    }
-
-    function _preValidateTransfer(
-        address _from, 
-        address _to, 
-        uint256 _value
-    ) 
-        internal 
-    {
-
     }
 }

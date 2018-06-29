@@ -1,8 +1,8 @@
-pragma solidity ^0.4.21;
+pragma solidity ^0.4.24;
 
 import "./Moduler.sol";
 
-import "./LockableToken.sol";
+import "./ReliableToken.sol";
 
 /**
  * @title TokenDrop
@@ -15,7 +15,7 @@ contract TokenDrop is Moduler {
     * @dev Creates a contract that drop its initication balances of locked ERC20 token for gift
     * @param _token token of ERC20 token which is being managed
     */
-    constructor(LockableToken _token) 
+    constructor(ReliableToken _token) 
         public
         Moduler(_token)
     {
@@ -41,7 +41,7 @@ contract TokenDrop is Moduler {
         require(hasTokenOwnership());
 
         for (uint i = 0; i < _toList.length; i++ ) {
-            token.transferWithLock(_toList[i], _amountEach, _expiresAtList);
+            token.transferLocked(_toList[i], _amountEach, _expiresAtList);
         }
 
         return true;

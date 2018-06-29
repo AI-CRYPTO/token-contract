@@ -1,8 +1,8 @@
-pragma solidity ^0.4.21;
+pragma solidity ^0.4.24;
+
+import "./ReliableToken.sol";
 
 import "./lifecycle/Destructible.sol";
-
-import "./LockableToken.sol";
 import "./math/SafeMath.sol";
 
 /**
@@ -16,9 +16,9 @@ contract Moduler is Destructible {
     event Confiscated(address _recipient, uint256 _refund);
 
     // ERC20 basic token contract being held    
-    LockableToken public token;
+    ReliableToken public token;
 
-    constructor(LockableToken _token) 
+    constructor(ReliableToken _token) 
         public
     {
         token = _token;
@@ -26,7 +26,7 @@ contract Moduler is Destructible {
 
     /**
     * @dev Replace token 
-    * @param token address of ERC20 token which is being managed
+    * @param _tokenAddr address of ERC20 token which is being managed
     */
     function setToken(address _tokenAddr) 
         external 
@@ -34,7 +34,7 @@ contract Moduler is Destructible {
     {
         require(_tokenAddr != 0x0);
 
-        token = LockableToken(_tokenAddr);
+        token = ReliableToken(_tokenAddr);
     }
 
     /**
