@@ -2,9 +2,9 @@ pragma solidity ^0.4.24;
 
 import "./StandardToken.sol";
 
-import "./ownership/Administable.sol";
+import "./ownership/Administrable.sol";
 
-contract MintableToken is StandardToken, Administable {
+contract MintableToken is StandardToken, Administrable {
     event Mint(address indexed to, uint256 amount);
     event MintStarted();
     event MintFinished();

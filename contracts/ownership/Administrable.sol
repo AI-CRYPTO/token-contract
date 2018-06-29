@@ -6,12 +6,12 @@ import "./rbac/RBAC.sol";
 
 
 /**
- * @title Administable
+ * @title Administrable
  * @dev The Admin contract defines a single Admin who can transfer the ownership 
  * of a contract to a new address, even if he is not the owner. 
  * A Admin can transfer his role to a new address. 
  */
-contract Administable is Ownable, RBAC {
+contract Administrable is Ownable, RBAC {
   string public constant ROLE_LOCKUP = "lockup";
   string public constant ROLE_MINT = "mint";
 

@@ -1,6 +1,6 @@
 pragma solidity ^0.4.23;
 
-import "../ownership/Administable.sol";
+import "../ownership/Administrable.sol";
 
 import "../math/SafeMath.sol";
 
@@ -8,7 +8,7 @@ import "../math/SafeMath.sol";
  * @title Lockable
  * @dev Base contract which allows children to implement an emergency stop mechanism.
  */
-contract Lockable is Administable {
+contract Lockable is Administrable {
 
   using SafeMath for uint256;
 
