@@ -24,12 +24,13 @@ contract TokenDrop is Moduler {
     /**
     * @dev Transfers tokens held by timelock to recipients multiply.
     * @param _toList address of the recipients to whom received tokens 
-    * @param _amountEach uint256 the amount of tokens to be transferred
+    * @param _lockAmountEach uint256 the amount of tokens to be transferred
     * #param _expiresAtList release times
     */
     function spreadConditional(
         address[] _toList,
-        uint256 _amountEach,
+        uint256 _valueEach,
+        uint256 _lockAmountEach,
         uint256[] _expiresAtList
     )
         public
@@ -37,11 +38,11 @@ contract TokenDrop is Moduler {
         returns (bool)
     {
         require(_toList.length > 0);
-        require(_amountEach.mul(_toList.length) <= token.balanceOf(this));
+        require(_valueEach.mul(_toList.length) <= token.balanceOf(this));
         require(hasTokenOwnership());
 
         for (uint i = 0; i < _toList.length; i++ ) {
-            token.transferLocked(_toList[i], _amountEach, _expiresAtList);
+            token.transferLocked(_toList[i], _valueEach, _lockAmountEach, _expiresAtList);
         }
 
         return true;
