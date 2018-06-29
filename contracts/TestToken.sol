@@ -1,14 +1,12 @@
 pragma solidity ^0.4.24;
 
-import './ReliableToken.sol';
+import './BundableToken.sol';
 
-contract TestToken is ReliableToken {
+contract TestToken is BundableToken {
 
   string public constant name = "Test Crypto";
   string public constant symbol = "TTC";
   uint32 public constant decimals = 18;
-
-  uint256 public constant INITIAL_SUPPLY = 10000000000 * (10 ** uint256(decimals));
 
   constructor(address initialAccount, uint initialBalance) public {
     balances[initialAccount] = initialBalance;
