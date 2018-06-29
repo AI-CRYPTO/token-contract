@@ -1,8 +1,10 @@
 build
 node_modules
 test
+tested
 migrations
 truffle.js
 package-lock.json
 package.json
 .babelrc
+
