@@ -10,11 +10,15 @@ contract BurnableToken is StandardToken {
     * @dev Burns a specific amount of tokens.
     * @param _value The amount of token to be burned.
     */
-    function burn(uint256 _value) public {
+    function burn(uint256 _value) 
+        public 
+    {
         _burn(msg.sender, _value);
     }
 
-    function _burn(address _who, uint256 _value) internal {
+    function _burn(address _who, uint256 _value) 
+        internal 
+    {
         require(_value <= balances[_who]);
         // no need to require value <= totalSupply, since that would imply the
         // sender's balance is greater than the totalSupply, which *should* be an assertion failure

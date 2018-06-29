@@ -1,6 +1,7 @@
 pragma solidity ^0.4.24;
 
 import "./MintableToken.sol";
+import "./BurnableToken.sol";
 
 import "./contraint/Lockable.sol";
 import "./lifecycle/Pausable.sol";
@@ -11,7 +12,7 @@ import "./math/SafeMath.sol";
  * @title Lockable token
  * @dev ReliableTokenToken modified with lockable transfers.
  **/
-contract ReliableToken is MintableToken, Pausable, Lockable {
+contract ReliableToken is MintableToken, BurnableToken, Pausable, Lockable {
 
   using SafeMath for uint256;
 

@@ -1,10 +1,10 @@
 pragma solidity ^0.4.24;
 
-import "./BurnableToken.sol";
+import "./StandardToken.sol";
 
 import "./ownership/Ownable.sol";
 
-contract MintableToken is BurnableToken, Ownable {
+contract MintableToken is StandardToken, Ownable {
     event Mint(address indexed to, uint256 amount);
     event MintStarted();
     event MintFinished();
