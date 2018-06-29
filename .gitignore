@@ -1,5 +1,7 @@
 build
 node_modules
+test
+migrations
 truffle.js
 package-lock.json
 package.json
