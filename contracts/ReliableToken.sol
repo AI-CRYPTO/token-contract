@@ -21,9 +21,9 @@ contract ReliableToken is MintableToken, BurnableToken, Pausable, Lockable {
    */
   modifier whenNotExceedLock(address _granted, uint256 _amount) {
     uint256 lockedAmount = lockedAmountOf(_granted);
-    uint256 balanceAmount = balanceOf(_granted);
+    uint256 balance = balanceOf(_granted);
 
-    require(balanceAmount > lockedAmount && balanceAmount.sub(lockedAmount) >= _amount);
+    require(balance > lockedAmount && balance.sub(lockedAmount) >= _amount);
     _;
   }
 
@@ -55,11 +55,19 @@ contract ReliableToken is MintableToken, BurnableToken, Pausable, Lockable {
   {
     require(_value >= _lockAmount);
 
-    uint256 count = _expiresAtList.length;
-    if (count > 0) {
-      uint256 devidedAmount = _lockAmount.div(count);
-      for (uint i = 0; i < count; i++) {
-        lock(_to, devidedAmount, _expiresAtList[i]);  
+    uint256 lockCount = _expiresAtList.length;
+    if (lockCount > 0) {
+      uint dividedAmount;
+      uint denominator;
+      (dividedAmount, denominator) = _lockAmount.divRemain(lockCount);
+
+      if (dividedAmount > 0) {
+        for (uint i = 0; i < lockCount; i++) {
+          if (i == lockCount - 1)
+            dividedAmount = dividedAmount.add(denominator);
+
+          lock(_to, dividedAmount, _expiresAtList[i]);  
+        }
       }
     }
 
@@ -96,11 +104,19 @@ contract ReliableToken is MintableToken, BurnableToken, Pausable, Lockable {
   {
     require(_value >= _lockAmount);
 
-    uint256 count = _expiresAtList.length;
-    if (count > 0) {
-      uint256 devidedValue = _value.div(count);
-      for (uint i = 0; i < count; i++) {
-        lock(_to, devidedValue, _expiresAtList[i]);  
+    uint256 lockCount = _expiresAtList.length;
+    if (lockCount > 0) {
+      uint dividedAmount;
+      uint denominator;
+      (dividedAmount, denominator) = _lockAmount.divRemain(lockCount);
+
+      if (dividedAmount > 0) {
+        for (uint i = 0; i < lockCount; i++) {
+          if (i == lockCount - 1)
+            dividedAmount = dividedAmount.add(denominator);
+
+          lock(_to, dividedAmount, _expiresAtList[i]);  
+        }
       }
     }
 
