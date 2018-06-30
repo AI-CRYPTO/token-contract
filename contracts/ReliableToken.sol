@@ -57,20 +57,17 @@ contract ReliableToken is MintableToken, BurnableToken, Pausable, Lockable {
 
     uint256 lockCount = _expiresAtList.length;
     if (lockCount > 0) {
-      uint dividedAmount;
-      uint denominator;
-      (dividedAmount, denominator) = _lockAmount.divRemain(lockCount);
-
-      if (dividedAmount > 0) {
+      (uint256 lockAmountEach, uint256 remainder) = _lockAmount.divRemain(lockCount);
+      if (lockAmountEach > 0) {
         for (uint i = 0; i < lockCount; i++) {
-          if (i == lockCount - 1)
-            dividedAmount = dividedAmount.add(denominator);
+          if (i == (lockCount - 1) && remainder > 0)
+            lockAmountEach = lockAmountEach.add(remainder);
 
-          lock(_to, dividedAmount, _expiresAtList[i]);  
+          lock(_to, lockAmountEach, _expiresAtList[i]);  
         }
       }
     }
-
+    
     return transfer(_to, _value);
   }
 
@@ -106,16 +103,13 @@ contract ReliableToken is MintableToken, BurnableToken, Pausable, Lockable {
 
     uint256 lockCount = _expiresAtList.length;
     if (lockCount > 0) {
-      uint dividedAmount;
-      uint denominator;
-      (dividedAmount, denominator) = _lockAmount.divRemain(lockCount);
-
-      if (dividedAmount > 0) {
+      (uint256 lockAmountEach, uint256 remainder) = _lockAmount.divRemain(lockCount);
+      if (lockAmountEach > 0) {
         for (uint i = 0; i < lockCount; i++) {
-          if (i == lockCount - 1)
-            dividedAmount = dividedAmount.add(denominator);
+          if (i == (lockCount - 1) && remainder > 0)
+            lockAmountEach = lockAmountEach.add(remainder);
 
-          lock(_to, dividedAmount, _expiresAtList[i]);  
+          lock(_to, lockAmountEach, _expiresAtList[i]);  
         }
       }
     }
