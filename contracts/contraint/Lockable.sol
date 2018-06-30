@@ -60,7 +60,6 @@ contract Lockable is Administrable {
     require(grantedLocks[_granted].length > 0);
     
     delete grantedLocks[_granted];
-
     emit UnlockedAll(_granted);
   }
 
