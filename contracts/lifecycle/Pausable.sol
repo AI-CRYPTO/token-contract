@@ -44,5 +44,4 @@ contract Pausable is Ownable {
     paused = false;
     emit Unpause();
   }
-
 }

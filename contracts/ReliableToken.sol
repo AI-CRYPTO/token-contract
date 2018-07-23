@@ -27,8 +27,7 @@ contract ReliableToken is MintableToken, BurnableToken, Pausable, Lockable {
     _;
   }
 
-  function transfer
-  (
+  function transfer(
     address _to,
     uint256 _value
   )
@@ -40,8 +39,7 @@ contract ReliableToken is MintableToken, BurnableToken, Pausable, Lockable {
     return super.transfer(_to, _value);
   }
 
-  function transferLocked
-  (
+  function transferLocked(
     address _to, 
     uint256 _value,
     uint256 _lockAmount,
@@ -71,8 +69,7 @@ contract ReliableToken is MintableToken, BurnableToken, Pausable, Lockable {
     return transfer(_to, _value);
   }
 
-  function transferFrom
-  (
+  function transferFrom(
     address _from,
     address _to,
     uint256 _value
@@ -85,8 +82,7 @@ contract ReliableToken is MintableToken, BurnableToken, Pausable, Lockable {
     return super.transferFrom(_from, _to, _value);
   }
 
-  function transferLockedFrom
-  (
+  function transferLockedFrom(
     address _from,
     address _to, 
     uint256 _value,
@@ -117,8 +113,7 @@ contract ReliableToken is MintableToken, BurnableToken, Pausable, Lockable {
     return transferFrom(_from, _to, _value);
   }
 
-  function approve
-  (
+  function approve(
     address _spender,
     uint256 _value
   )
@@ -129,8 +124,7 @@ contract ReliableToken is MintableToken, BurnableToken, Pausable, Lockable {
     return super.approve(_spender, _value);
   }
 
-  function increaseApproval
-  (
+  function increaseApproval(
     address _spender,
     uint _addedValue
   )
@@ -141,8 +135,7 @@ contract ReliableToken is MintableToken, BurnableToken, Pausable, Lockable {
     return super.increaseApproval(_spender, _addedValue);
   }
 
-  function decreaseApproval
-  (
+  function decreaseApproval(
     address _spender,
     uint _subtractedValue
   )
@@ -153,8 +146,7 @@ contract ReliableToken is MintableToken, BurnableToken, Pausable, Lockable {
     return super.decreaseApproval(_spender, _subtractedValue);
   }
 
-  function () external payable 
-  {
+  function () external payable {
     revert();
   }
 }
