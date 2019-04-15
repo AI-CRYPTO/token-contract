@@ -1,11 +1,11 @@
 pragma solidity ^0.4.24;
 
-import './BundableToken.sol';
+import './EnhancedToken.sol';
 
-contract TestToken is BundableToken {
+contract AICTestToken is EnhancedToken {
 
-  string public constant name = "TESTCRYPTO";
-  string public constant symbol = "TXC";
+  string public constant name = "AICRYPTO";
+  string public constant symbol = "AIX";
   uint32 public constant decimals = 18;
 
   uint256 public constant INITIAL_SUPPLY = 10000000000 * (10 ** uint256(decimals));
@@ -19,10 +19,4 @@ contract TestToken is BundableToken {
     balances[msg.sender] = INITIAL_SUPPLY;
     emit Transfer(0x0, msg.sender, INITIAL_SUPPLY);
   }
-
-  /*constructor(address initialAccount, uint initialBalance) public {
-    balances[initialAccount] = initialBalance;
-    totalSupply_ = initialBalance;
-    emit Transfer(0x0, initialAccount, initialBalance);
-  }*/
 }

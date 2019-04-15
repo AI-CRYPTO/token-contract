@@ -48,7 +48,7 @@ contract ReliableToken is MintableToken, BurnableToken, Pausable, Lockable {
     public 
     whenNotPaused
     whenNotExceedLock(msg.sender, _value)
-    onlyOwnerOrAdmin(ROLE_LOCKUP)
+    onlyOwnerOrAdmin(ROLE_LOCKUP          )
     returns (bool) 
   {
     require(_value >= _lockAmount);

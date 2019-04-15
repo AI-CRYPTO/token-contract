@@ -83,7 +83,6 @@ contract Lockable is Administrable {
         } 
       }
     }
-    
 
     return lockedAmount;
   }

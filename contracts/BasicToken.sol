@@ -34,7 +34,7 @@ contract BasicToken is ERC20Basic {
         returns (bool) 
     {
         require(_to != address(0));
-        require(_to != msg.sender);
+        //require(_to != msg.sender);
         require(_value <= balances[msg.sender]);
         
         balances[msg.sender] = balances[msg.sender].sub(_value);
